@@ -30,9 +30,15 @@
 		5BC5C83C2B068C68003FDA27 /* RightShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C83B2B068C68003FDA27 /* RightShape.swift */; };
 		5BC5C8422B07F0F7003FDA27 /* LeftShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8412B07F0F7003FDA27 /* LeftShape.swift */; };
 		5BC5C8442B07F630003FDA27 /* BottomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8432B07F630003FDA27 /* BottomShape.swift */; };
+		5BC5C8462B0BDA3D003FDA27 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8452B0BDA3D003FDA27 /* LoginModel.swift */; };
+		5BC5C8482B0BDE30003FDA27 /* RegViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8472B0BDE30003FDA27 /* RegViewControllerViewModel.swift */; };
+		5BC5C84C2B0BE822003FDA27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC5C84B2B0BE822003FDA27 /* GoogleService-Info.plist */; };
+		DEACD5072A6BC792224F0379 /* Pods_Find_a_friend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E94B8B9E7A363DD4DFD8799 /* Pods_Find_a_friend.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E94B8B9E7A363DD4DFD8799 /* Pods_Find_a_friend.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Find_a_friend.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AE9F1B904601746CB0EA235 /* Pods-Find a friend.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Find a friend.release.xcconfig"; path = "Target Support Files/Pods-Find a friend/Pods-Find a friend.release.xcconfig"; sourceTree = "<group>"; };
 		5BC5C7EF2B027953003FDA27 /* Find a friend.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Find a friend.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC5C7F22B027953003FDA27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BC5C7F42B027953003FDA27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +62,10 @@
 		5BC5C83B2B068C68003FDA27 /* RightShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightShape.swift; sourceTree = "<group>"; };
 		5BC5C8412B07F0F7003FDA27 /* LeftShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftShape.swift; sourceTree = "<group>"; };
 		5BC5C8432B07F630003FDA27 /* BottomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomShape.swift; sourceTree = "<group>"; };
+		5BC5C8452B0BDA3D003FDA27 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		5BC5C8472B0BDE30003FDA27 /* RegViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewControllerViewModel.swift; sourceTree = "<group>"; };
+		5BC5C84B2B0BE822003FDA27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D39B0EBDC29249919BD8826F /* Pods-Find a friend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Find a friend.debug.xcconfig"; path = "Target Support Files/Pods-Find a friend/Pods-Find a friend.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +75,7 @@
 			files = (
 				5BC5C81F2B0283AD003FDA27 /* SnapKit in Frameworks */,
 				5BC5C8212B0283AD003FDA27 /* SnapKit-Dynamic in Frameworks */,
+				DEACD5072A6BC792224F0379 /* Pods_Find_a_friend.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +87,8 @@
 			children = (
 				5BC5C7F12B027953003FDA27 /* Find a friend */,
 				5BC5C7F02B027953003FDA27 /* Products */,
+				90CD8A54D4521D6857A668A4 /* Pods */,
+				BDB13358727B1C6DFC103603 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,7 +111,7 @@
 				5BC5C8082B027A85003FDA27 /* Model */,
 				5BC5C8102B027BB4003FDA27 /* Config */,
 				5BC5C8062B027A6C003FDA27 /* Extansion */,
-				5BC5C80A2B027AA3003FDA27 /* Supporting fils */,
+				5BC5C80A2B027AA3003FDA27 /* Supporting files */,
 				5BC5C7FB2B027954003FDA27 /* Assets.xcassets */,
 				5BC5C7FD2B027954003FDA27 /* LaunchScreen.storyboard */,
 				5BC5C8002B027954003FDA27 /* Info.plist */,
@@ -131,6 +144,7 @@
 			children = (
 				5BC5C80C2B027AE5003FDA27 /* User.swift */,
 				5BC5C82B2B0684E9003FDA27 /* WeatherModel.swift */,
+				5BC5C8452B0BDA3D003FDA27 /* LoginModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -138,15 +152,16 @@
 		5BC5C8092B027A89003FDA27 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5BC5C8472B0BDE30003FDA27 /* RegViewControllerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		5BC5C80A2B027AA3003FDA27 /* Supporting fils */ = {
+		5BC5C80A2B027AA3003FDA27 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = "Supporting fils";
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 		5BC5C80B2B027AC5003FDA27 /* Application */ = {
@@ -260,6 +275,24 @@
 			path = BgRegView;
 			sourceTree = "<group>";
 		};
+		90CD8A54D4521D6857A668A4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D39B0EBDC29249919BD8826F /* Pods-Find a friend.debug.xcconfig */,
+				5AE9F1B904601746CB0EA235 /* Pods-Find a friend.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BDB13358727B1C6DFC103603 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5BC5C84B2B0BE822003FDA27 /* GoogleService-Info.plist */,
+				3E94B8B9E7A363DD4DFD8799 /* Pods_Find_a_friend.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -267,9 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BC5C8032B027954003FDA27 /* Build configuration list for PBXNativeTarget "Find a friend" */;
 			buildPhases = (
+				72C30FF484004380723278E6 /* [CP] Check Pods Manifest.lock */,
 				5BC5C7EB2B027953003FDA27 /* Sources */,
 				5BC5C7EC2B027953003FDA27 /* Frameworks */,
 				5BC5C7ED2B027953003FDA27 /* Resources */,
+				F8DD01DF3B96CA0189CA0B72 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -327,10 +362,53 @@
 			files = (
 				5BC5C7FF2B027954003FDA27 /* LaunchScreen.storyboard in Resources */,
 				5BC5C7FC2B027954003FDA27 /* Assets.xcassets in Resources */,
+				5BC5C84C2B0BE822003FDA27 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		72C30FF484004380723278E6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Find a friend-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8DD01DF3B96CA0189CA0B72 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Find a friend/Pods-Find a friend-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Find a friend/Pods-Find a friend-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Find a friend/Pods-Find a friend-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5BC5C7EB2B027953003FDA27 /* Sources */ = {
@@ -342,10 +420,12 @@
 				5BC5C8442B07F630003FDA27 /* BottomShape.swift in Sources */,
 				5BC5C8132B027BCD003FDA27 /* ColorApp.swift in Sources */,
 				5BC5C7F72B027953003FDA27 /* MainViewController.swift in Sources */,
+				5BC5C8462B0BDA3D003FDA27 /* LoginModel.swift in Sources */,
 				5BC5C81A2B027E71003FDA27 /* BGView.swift in Sources */,
 				5BC5C7F32B027953003FDA27 /* AppDelegate.swift in Sources */,
 				5BC5C7F52B027953003FDA27 /* SceneDelegate.swift in Sources */,
 				5BC5C81C2B028017003FDA27 /* Clouds.swift in Sources */,
+				5BC5C8482B0BDE30003FDA27 /* RegViewControllerViewModel.swift in Sources */,
 				5BC5C8362B068726003FDA27 /* AuthViewController.swift in Sources */,
 				5BC5C8172B027C8E003FDA27 /* UIView + Extansion.swift in Sources */,
 				5BC5C8422B07F0F7003FDA27 /* LeftShape.swift in Sources */,
@@ -494,11 +574,13 @@
 		};
 		5BC5C8042B027954003FDA27 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D39B0EBDC29249919BD8826F /* Pods-Find a friend.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Find a friend/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -524,11 +606,13 @@
 		};
 		5BC5C8052B027954003FDA27 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5AE9F1B904601746CB0EA235 /* Pods-Find a friend.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Find a friend/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

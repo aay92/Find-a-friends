@@ -100,7 +100,8 @@ class RegViewController: UIViewController {
     
     private var buttonSignIN: UIButton = {
         let btn = UIButton()
-        btn.backgroundColor = ColorApp.colorButton
+        btn.backgroundColor = .white
+        btn.setTitleColor(ColorApp.colorButton, for: .normal)
         btn.titleLabel?.font = UIFont.systemFont(ofSize: 13, weight: .bold)
         btn.addTarget(self, action: #selector(sigtInBtnAction), for: .touchUpInside)
         btn.setTitle("Войти", for: .normal)
@@ -133,8 +134,9 @@ class RegViewController: UIViewController {
         buttonRegister.layer.cornerRadius = imageTF.bounds.height / 5
         
         buttonSignIN.layoutIfNeeded()
-        buttonSignIN.layer.masksToBounds = true
-        buttonSignIN.layer.cornerRadius = imageTF.bounds.height / 5
+        buttonSignIN.layer.masksToBounds = false
+        buttonSignIN.layer.cornerRadius = buttonSignIN.bounds.height / 5
+        buttonSignIN.setAllSideShadow(shadowShowSize: 1)
         
         nameTF.layer.shadowOpacity = 0.4
         nameTF.layer.shadowRadius = 0.0
@@ -228,8 +230,8 @@ class RegViewController: UIViewController {
             make.height.equalTo(height * 0.06)
         }
         buttonSignIN.snp.makeConstraints { make in
-            make.width.equalTo(height * 0.2)
-            make.height.equalTo(height * 0.06)
+            make.width.equalTo(height * 0.14)
+            make.height.equalTo(height * 0.055)
         }
     }
     
