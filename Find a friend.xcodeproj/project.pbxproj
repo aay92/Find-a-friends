@@ -30,9 +30,12 @@
 		5BC5C83C2B068C68003FDA27 /* RightShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C83B2B068C68003FDA27 /* RightShape.swift */; };
 		5BC5C8422B07F0F7003FDA27 /* LeftShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8412B07F0F7003FDA27 /* LeftShape.swift */; };
 		5BC5C8442B07F630003FDA27 /* BottomShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8432B07F630003FDA27 /* BottomShape.swift */; };
-		5BC5C8462B0BDA3D003FDA27 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8452B0BDA3D003FDA27 /* LoginModel.swift */; };
 		5BC5C8482B0BDE30003FDA27 /* RegViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8472B0BDE30003FDA27 /* RegViewControllerViewModel.swift */; };
 		5BC5C84C2B0BE822003FDA27 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5BC5C84B2B0BE822003FDA27 /* GoogleService-Info.plist */; };
+		5BC5C8862B1CF559003FDA27 /* TextFieldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8852B1CF559003FDA27 /* TextFieldManager.swift */; };
+		5BC5C8882B1CF5A3003FDA27 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8872B1CF5A3003FDA27 /* NetworkManager.swift */; };
+		5BC5C88A2B1CF5EF003FDA27 /* ModelProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C8892B1CF5EF003FDA27 /* ModelProject.swift */; };
+		5BC5C88D2B1CF72A003FDA27 /* ModelChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC5C88C2B1CF72A003FDA27 /* ModelChat.swift */; };
 		DEACD5072A6BC792224F0379 /* Pods_Find_a_friend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E94B8B9E7A363DD4DFD8799 /* Pods_Find_a_friend.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,9 +65,12 @@
 		5BC5C83B2B068C68003FDA27 /* RightShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RightShape.swift; sourceTree = "<group>"; };
 		5BC5C8412B07F0F7003FDA27 /* LeftShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftShape.swift; sourceTree = "<group>"; };
 		5BC5C8432B07F630003FDA27 /* BottomShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomShape.swift; sourceTree = "<group>"; };
-		5BC5C8452B0BDA3D003FDA27 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		5BC5C8472B0BDE30003FDA27 /* RegViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewControllerViewModel.swift; sourceTree = "<group>"; };
 		5BC5C84B2B0BE822003FDA27 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		5BC5C8852B1CF559003FDA27 /* TextFieldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldManager.swift; sourceTree = "<group>"; };
+		5BC5C8872B1CF5A3003FDA27 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5BC5C8892B1CF5EF003FDA27 /* ModelProject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProject.swift; sourceTree = "<group>"; };
+		5BC5C88C2B1CF72A003FDA27 /* ModelChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelChat.swift; sourceTree = "<group>"; };
 		D39B0EBDC29249919BD8826F /* Pods-Find a friend.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Find a friend.debug.xcconfig"; path = "Target Support Files/Pods-Find a friend/Pods-Find a friend.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +116,7 @@
 				5BC5C8092B027A89003FDA27 /* ViewModel */,
 				5BC5C8082B027A85003FDA27 /* Model */,
 				5BC5C8102B027BB4003FDA27 /* Config */,
+				5BC5C8842B1CF538003FDA27 /* Services */,
 				5BC5C8062B027A6C003FDA27 /* Extansion */,
 				5BC5C80A2B027AA3003FDA27 /* Supporting files */,
 				5BC5C7FB2B027954003FDA27 /* Assets.xcassets */,
@@ -131,8 +138,8 @@
 		5BC5C8072B027A79003FDA27 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				5BC5C8372B068856003FDA27 /* CustomView */,
 				5BC5C80F2B027B03003FDA27 /* MainView */,
+				5BC5C8372B068856003FDA27 /* CustomView */,
 				5BC5C80E2B027AF7003FDA27 /* Chat */,
 				5BC5C82D2B068539003FDA27 /* Map */,
 			);
@@ -142,9 +149,10 @@
 		5BC5C8082B027A85003FDA27 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5BC5C88B2B1CF721003FDA27 /* Chat */,
 				5BC5C80C2B027AE5003FDA27 /* User.swift */,
 				5BC5C82B2B0684E9003FDA27 /* WeatherModel.swift */,
-				5BC5C8452B0BDA3D003FDA27 /* LoginModel.swift */,
+				5BC5C8892B1CF5EF003FDA27 /* ModelProject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -273,6 +281,23 @@
 				5BC5C83B2B068C68003FDA27 /* RightShape.swift */,
 			);
 			path = BgRegView;
+			sourceTree = "<group>";
+		};
+		5BC5C8842B1CF538003FDA27 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5BC5C8852B1CF559003FDA27 /* TextFieldManager.swift */,
+				5BC5C8872B1CF5A3003FDA27 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5BC5C88B2B1CF721003FDA27 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5BC5C88C2B1CF72A003FDA27 /* ModelChat.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		90CD8A54D4521D6857A668A4 /* Pods */ = {
@@ -415,12 +440,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BC5C8882B1CF5A3003FDA27 /* NetworkManager.swift in Sources */,
 				5BC5C83C2B068C68003FDA27 /* RightShape.swift in Sources */,
+				5BC5C88A2B1CF5EF003FDA27 /* ModelProject.swift in Sources */,
 				5BC5C80D2B027AE5003FDA27 /* User.swift in Sources */,
 				5BC5C8442B07F630003FDA27 /* BottomShape.swift in Sources */,
 				5BC5C8132B027BCD003FDA27 /* ColorApp.swift in Sources */,
 				5BC5C7F72B027953003FDA27 /* MainViewController.swift in Sources */,
-				5BC5C8462B0BDA3D003FDA27 /* LoginModel.swift in Sources */,
 				5BC5C81A2B027E71003FDA27 /* BGView.swift in Sources */,
 				5BC5C7F32B027953003FDA27 /* AppDelegate.swift in Sources */,
 				5BC5C7F52B027953003FDA27 /* SceneDelegate.swift in Sources */,
@@ -433,9 +459,11 @@
 				5BC5C8152B027C38003FDA27 /* UIColor + Extansion.swift in Sources */,
 				5BC5C8242B053318003FDA27 /* TabBar.swift in Sources */,
 				5BC5C82C2B0684EA003FDA27 /* WeatherModel.swift in Sources */,
+				5BC5C88D2B1CF72A003FDA27 /* ModelChat.swift in Sources */,
 				5BC5C8322B0686FE003FDA27 /* LoginViewController.swift in Sources */,
 				5BC5C82A2B054EB4003FDA27 /* TabBar + Extenasion.swift in Sources */,
 				5BC5C8342B06871A003FDA27 /* RegViewController.swift in Sources */,
+				5BC5C8862B1CF559003FDA27 /* TextFieldManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

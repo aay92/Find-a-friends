@@ -8,8 +8,11 @@ import UIKit
 import SnapKit
 
 class AuthViewController: UIViewController {
-
+    
+    private let textFieldManager = TextFieldManager()
     private let bgLoginView = BgRegView()
+    private let networkManagerService = NetworkManagerService()
+    private let userDefaults = UserDefaults.standard
     
     private let mainTitle: UILabel = {
         let title = UILabel()
@@ -39,12 +42,33 @@ class AuthViewController: UIViewController {
         return text
     }()
     
+    private let emailTFView: UIView = {
+        let text = UIView()
+        text.backgroundColor = .clear
+        text.layer.cornerRadius = 10
+        text.layer.borderWidth = 4
+        text.layer.borderColor = UIColor.red.cgColor
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
     private let passwordTF: UITextField = {
         let text = UITextField()
         text.backgroundColor = ColorApp.colorTextFieldBackground
         text.layer.cornerRadius = 10
         text.placeholder = " Пароль"
+        text.isSecureTextEntry = true
         text.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
+    private let passwordTFView: UIView = {
+        let text = UIView()
+        text.backgroundColor = .clear
+        text.layer.cornerRadius = 10
+        text.layer.borderWidth = 4
+        text.layer.borderColor = UIColor.red.cgColor
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -54,7 +78,6 @@ class AuthViewController: UIViewController {
         image.tintColor = .white
         image.backgroundColor = ColorApp.colorTextFieldBackground
         image.image = UIImage(systemName: "person")
-        
         return image
     }()
     
@@ -104,12 +127,84 @@ class AuthViewController: UIViewController {
         setConfig()
     }
     
-    @objc private func registrbtnAction(){
-        print("RegistrbtnAction")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cleanUpFields()
     }
     
-    @objc private func sigtInBtnAction(){
-        print("sigtInBtnAction")
+    @objc private func registrbtnAction(){
+        let regViewController = RegViewController()
+        navigationController?
+            .pushViewController(regViewController, animated: true)
+    }
+    
+    @objc private func sigtInBtnAction(){    
+        if textFieldManager.validField(emailTFView, emailTF),
+           textFieldManager.validField(passwordTFView, passwordTF) {
+            
+            networkManagerService
+                .authInApp(data:
+                            LogiField(
+                                email: emailTF.text!,
+                                password: passwordTF.text!)) {[weak self] responce in
+                switch responce {
+                case .success:
+                    self?.userDefaults.set(true, forKey: "isLogin") //Пользователь вошел и в следующий заход не будет авторизововаться
+//                    self!.delegate.openAuthVC()
+//                    self!.delegate.closeVC()
+                    print("userDefaults сохранил вход")
+
+                case .error:
+                    let alert = self?.alertAction("Error Email or password", "Email или пароль не подошли")
+                    let okBtn = UIAlertAction(title: "Ok", style: .cancel)
+                    alert?.addAction(okBtn)
+                    self?.present(alert!, animated: true)
+
+                case .noVerify:
+                    let alert = self?.alertAction("Error not auth", "Вы не авторизовались, на вашу почту отправлено подтверждение ")
+                    let okBtn = UIAlertAction(title: "Ok", style: .cancel)
+                    self!.networkManagerService.confrimeEmail() ///проверка по email
+                    alert?.addAction(okBtn)
+                    self?.present(alert!, animated: true)
+                }
+            }
+            
+            let alert = alertAction("Успешно", "Вы успешно авторизовались )")
+            let okBtn = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(okBtn)
+            present(alert, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                print("Start main View Controller")
+    //             self.delegate.startVC()
+
+//                self.view.endEditing(true)///Если успешно , то закрывается вью
+                self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+               
+                let tabBar = TabBar()
+                self.present(tabBar, animated: true)
+                tabBar.modalPresentationStyle = .fullScreen
+//                print(self.navigationController?.viewControllers.count)
+
+            }
+            
+        } else {
+            let alert = alertAction(" ОШИБОЧКА :-(", "")
+            let okBtn = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(okBtn)
+            present(alert, animated: true)
+        }
+    }
+    
+    private func alertAction(_ header: String?,_ message: String?)-> UIAlertController {
+        let alert = UIAlertController(title: header, message: message, preferredStyle: .alert)
+        return alert
+    }
+    
+    private func cleanUpFields(){
+        emailTF.backgroundColor = ColorApp.colorTextFieldBackground
+        passwordTF.backgroundColor = ColorApp.colorTextFieldBackground
+        emailTF.text = nil
+        passwordTF.text = nil
     }
     
     private func setConfig(){
@@ -154,8 +249,8 @@ class AuthViewController: UIViewController {
          stack,
          stackBtn].forEach(view.addSubview(_:))
         
-        [passwordTF,
-         emailTF,
+        [emailTF,
+         passwordTF,
          imageTF].forEach(stack.addArrangedSubview(_:))
         
         [buttonSignIN,

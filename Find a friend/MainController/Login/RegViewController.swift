@@ -10,7 +10,9 @@ import SnapKit
 
 class RegViewController: UIViewController {
 
+    private let textFieldManager = TextFieldManager()
     private let bgLoginView = BgRegView()
+    private let networkManagerService = NetworkManagerService()
     
     private let mainTitle: UILabel = {
         let title = UILabel()
@@ -30,16 +32,6 @@ class RegViewController: UIViewController {
         return title
     }()
     
-    private let nameTF: UITextField = {
-        let text = UITextField()
-        text.backgroundColor = ColorApp.colorTextFieldBackground
-        text.layer.cornerRadius = 10
-        text.placeholder = " Имя"
-        text.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        text.translatesAutoresizingMaskIntoConstraints = false
-        return text
-    }()
-    
     private let emailTF: UITextField = {
         let text = UITextField()
         text.backgroundColor = ColorApp.colorTextFieldBackground
@@ -50,15 +42,58 @@ class RegViewController: UIViewController {
         return text
     }()
     
+    private let emailTFView: UIView = {
+        let text = UIView()
+        text.backgroundColor = .clear
+        text.layer.cornerRadius = 10
+        text.layer.borderWidth = 4
+        text.layer.borderColor = UIColor.red.cgColor
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
     private let passwordTF: UITextField = {
         let text = UITextField()
         text.backgroundColor = ColorApp.colorTextFieldBackground
         text.layer.cornerRadius = 10
         text.placeholder = " Пароль"
+        text.isSecureTextEntry = true
         text.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
+    
+    private let passwordTFView: UIView = {
+        let text = UIView()
+        text.backgroundColor = .clear
+        text.layer.cornerRadius = 10
+        text.layer.borderWidth = 4
+        text.layer.borderColor = UIColor.red.cgColor
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
+    private let rePasswordTF: UITextField = {
+        let text = UITextField()
+        text.backgroundColor = ColorApp.colorTextFieldBackground
+        text.layer.cornerRadius = 10
+        text.placeholder = " Повторите пароль"
+        text.isSecureTextEntry = true
+        text.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+    
+    private let rePasswordTFView: UIView = {
+        let text = UIView()
+        text.backgroundColor = .clear
+        text.layer.cornerRadius = 10
+        text.layer.borderWidth = 4
+        text.layer.borderColor = UIColor.red.cgColor
+        text.translatesAutoresizingMaskIntoConstraints = false
+        return text
+    }()
+
     
     private let imageTF: UIImageView = {
         let image = UIImageView()
@@ -114,12 +149,58 @@ class RegViewController: UIViewController {
         setConfig()
     }
     
-    @objc private func registrbtnAction(){
-        print("RegistrbtnAction")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cleanUpFields()
     }
+    
+    @objc private func registrbtnAction(){
+        if textFieldManager.validField(emailTFView, emailTF),
+           textFieldManager.validField(passwordTFView, passwordTF) {
+            if passwordTF.text == rePasswordTF.text {
+                networkManagerService.createNewUser(
+                    LogiField(email: emailTF.text!,
+                              password: passwordTF.text!)) {[weak self] code in
+                                  switch code.code {
+                                  case 0:
+                                      print("Ошибка регистрации")
+                                  case 1:
+                                      print("Успешная регистрация")
+                                      self?.networkManagerService.confrimeEmail() ///проверка по email
+                                      let alert = UIAlertController(title: "Massege", message: "Success", preferredStyle: .alert)
+                                      let okBtn = UIAlertAction(title: "ok", style: .default) { _ in
+                                          //                            self?.delegate?.closeVC()
+                                      }
+                                      alert.addAction(okBtn)
+                                      self?.present(alert, animated: true)
+                                  default:
+                                      print("Неизвестная ошибка")
+                                  }
+                                  
+                              }
+                print("Поле корректное")
+            } else {
+                print("Пароли не совподают")///Alert
+            }
+        }
+    }
+    
     
     @objc private func sigtInBtnAction(){
         print("sigtInBtnAction")
+        let authViewController = AuthViewController()
+        navigationController?
+            .pushViewController(authViewController, animated: true)
+    
+    }
+    
+    private func cleanUpFields(){
+        emailTF.backgroundColor = ColorApp.colorTextFieldBackground
+        passwordTF.backgroundColor = ColorApp.colorTextFieldBackground
+        rePasswordTF.backgroundColor = ColorApp.colorTextFieldBackground
+        emailTF.text = nil
+        passwordTF.text = nil
+        rePasswordTF.text = nil
     }
     
     private func setConfig(){
@@ -138,10 +219,10 @@ class RegViewController: UIViewController {
         buttonSignIN.layer.cornerRadius = buttonSignIN.bounds.height / 5
         buttonSignIN.setAllSideShadow(shadowShowSize: 1)
         
-        nameTF.layer.shadowOpacity = 0.4
-        nameTF.layer.shadowRadius = 0.0
-        nameTF.layer.shadowColor = UIColor(hexString: "ae66e1").cgColor
-        nameTF.layer.shadowOffset = CGSizeMake(0.0, -1.0)
+        rePasswordTF.layer.shadowOpacity = 0.4
+        rePasswordTF.layer.shadowRadius = 0.0
+        rePasswordTF.layer.shadowColor = UIColor(hexString: "ae66e1").cgColor
+        rePasswordTF.layer.shadowOffset = CGSizeMake(0.0, -1.0)
         
         passwordTF.layer.shadowOpacity = 0.4
         passwordTF.layer.shadowRadius = 0.0
@@ -169,9 +250,9 @@ class RegViewController: UIViewController {
          stack,
          stackBtn].forEach(view.addSubview(_:))
         
-        [nameTF, 
+        [emailTF,
          passwordTF,
-         emailTF,
+         rePasswordTF,
          imageTF].forEach(stack.addArrangedSubview(_:))
         
         [buttonRegister,
@@ -205,7 +286,7 @@ class RegViewController: UIViewController {
             make.bottom.equalTo(view.snp.bottom).offset(-height * 0.25)
         }
         
-        nameTF.snp.makeConstraints { make in
+        rePasswordTF.snp.makeConstraints { make in
             make.width.equalTo(width * 0.7)
             make.height.equalTo(height * 0.05)
         }
